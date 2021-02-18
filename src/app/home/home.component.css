@@ -1,0 +1,9 @@
+.material-icons.color_yellow { color: #faf615; }
+.title-center {
+    margin: 0 auto;
+}
+.div-center {
+    display: flex;
+    justify-content: center;
+}
+  

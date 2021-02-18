@@ -1,0 +1,77 @@
+<mat-toolbar style="justify-content: center;">
+    <mat-toolbar-row style="font-size:1.5rem; 
+                            height: 80px; 
+                            background-color:grey; 
+                            color: white;">
+        <span class="title-center">PLEASE RATE US TODAY</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<br /><br /><br /><br />
+
+<div class="div-center"> 
+    <form [formGroup]="rateForm">
+        <div class="form-group">
+            <input 
+                formControlName="ratingType"
+                id="ratingType" 
+                type="hidden"
+                class="form-control"
+                name="ratingType">
+        </div>
+        <div>
+            <table>
+                <tr align="center">
+                    <td>
+                        <button style="background-color:lime;height: 150px;width: 150px;margin: 25px;" type="button" (click)="rate('GOOD'); refreshPage();" >
+                            <label style="font-size: xx-large;">
+                                <mat-icon> sentiment_satisfied_alt</mat-icon><br />GOOD
+                            </label>
+                        </button>
+                        <br />
+                        <div *ngIf="countGood > 0; else elseBlockGood">
+                            <span style="color: gold; font-size: 40px;">
+                                {{ countGood }}
+                            </span> 
+                        </div>
+                        <ng-template #elseBlockGood>
+                            <span style="color: gold; font-size: 40px;">0</span>
+                        </ng-template>
+                    </td>
+                    <td>
+                        <button style="background-color:yellow;height: 150px;width: 150px;margin: 25px;" type="button" (click)="rate('NOT_BAD'); refreshPage();" >
+                            <label style="font-size: xx-large;">
+                                <mat-icon>sentiment_satisfied</mat-icon><br />NOT BAD
+                            </label>
+                        </button>
+                        <br />
+                        <div *ngIf="countBad > 0; else elseBlockNotBad"> 
+                            <span style="color: gold; font-size: 40px;">
+                                {{ countNotBad }}
+                            </span>
+                        </div>
+                        <ng-template #elseBlockNotBad>
+                            <span style="color: gold; font-size: 40px;">0</span>
+                        </ng-template>
+                    </td>
+                    <td>
+                        <button style="background-color: red;height: 150px;width: 150px;margin: 25px;" type="button" (click)="rate('BAD'); refreshPage();" >
+                            <label style="font-size: xx-large;">
+                                <mat-icon>sentiment_very_dissatisfied</mat-icon><br />BAD
+                            </label>
+                        </button>
+                        <br />
+                        <div *ngIf="countNotBad > 0; else elseBlockBad"> 
+                            <span style="color: gold; font-size: 40px;">
+                                {{ countBad }}
+                            </span>
+                        </div>
+                        <ng-template #elseBlockBad>
+                            <span style="color: gold; font-size: 40px;">0</span>
+                        </ng-template>
+                    </td>
+                </tr>
+            </table>           
+        </div>
+    </form>
+</div>
